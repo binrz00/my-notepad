@@ -15,10 +15,10 @@ app.get("/notes", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/notes.html"))
 });
 app.get("/api/notes", function (req, res) {
-  res.sendfile(path.join(__dirname, "/db/db.json"))
+  res.sendfile(path.join(__dirname, "Develop/db/db.json"))
 });
 app.post("/api/notes", function (req, res) {
-  fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", function (err, data) {
+  fs.readFile(path.join(__dirname, "Develop/db/db.json"), "utf8", function (err, data) {
     if (err) {
       console.log(err)
     }
@@ -32,7 +32,7 @@ app.post("/api/notes", function (req, res) {
     oldNotes.push(noteObj);
     res.json(noteObj);
     console.log(noteObj);
-    fs.writeFile(path.join(__dirname, "/db/db.json"), JSON.stringify(oldNotes, null, 2), function (err) {
+    fs.writeFile(path.join(__dirname, "Develop/db/db.json"), JSON.stringify(oldNotes, null, 2), function (err) {
       if (err) {
         return console.log(err)
       }
@@ -41,7 +41,7 @@ app.post("/api/notes", function (req, res) {
 });
 app.delete("/api/notes/:id", function (req, res) {
   const dNoteID = req.params.id;
-  fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", function (err, data) {
+  fs.readFile(path.join(__dirname, "Develop/db/db.json"), "utf8", function (err, data) {
     if (err) {
       console.log(err)
     }
@@ -51,7 +51,7 @@ app.delete("/api/notes/:id", function (req, res) {
     for (let i = 0; i < oNotes.length; i++) {
       oNotes[i].id = i + 1;
     }
-    fs.writeFile(path.join(__dirname, "/db/db.json"), JSON.stringify(oNotes, null, 2), function (err) {
+    fs.writeFile(path.join(__dirname, "Develop/db/db.json"), JSON.stringify(oNotes, null, 2), function (err) {
       if (err) {
         return console.log(err)
       }
