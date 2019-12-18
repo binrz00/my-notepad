@@ -6,13 +6,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + 'Develop/public'));
 // send the user to the correct html using routes
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "/public/index.html"))
+  res.sendFile(path.join(__dirname, "Develop/public/index.html"))
 });
 app.get("/notes", function (req, res) {
-  res.sendFile(path.join(__dirname, "/public/notes.html"))
+  res.sendFile(path.join(__dirname, "Develop/public/notes.html"))
 });
 app.get("/api/notes", function (req, res) {
   res.sendfile(path.join(__dirname, "Develop/db/db.json"))
