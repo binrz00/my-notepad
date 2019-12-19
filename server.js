@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(__dirname + 'Develop/public'));
+app.use(express.static("Develop/public/"));
 // send the user to the correct html using routes
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "Develop/public/index.html"))
